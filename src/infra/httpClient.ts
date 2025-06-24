@@ -1,6 +1,6 @@
 import { HttpClient, HttpRequest } from './httpClient.type'
 
-const URL = "http://rochacorporation.com.br:8001"
+const URL = "http://localhost:3001"
 
 export class HttpFetchAdapter implements HttpClient {
 	async request<R>({ endpoint, method, body, headers }: HttpRequest): Promise<R> {

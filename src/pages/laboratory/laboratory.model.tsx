@@ -1,5 +1,7 @@
+import { ILaboratory } from "@/models/laboratory.model";
 import { LaboratoryService } from "@/services/laboratory.service";
 import { useQuery } from "@tanstack/react-query";
+import type { TableProps } from 'antd';
 
 export function useModelLaboratory(laboratoryService: LaboratoryService) {
 
@@ -10,7 +12,30 @@ export function useModelLaboratory(laboratoryService: LaboratoryService) {
         queryFn: () => laboratoryService.getAllLaboratory()
     })
 
+    const columns: TableProps<ILaboratory>['columns'] = [
+        {
+            title: 'ID',
+            dataIndex: '_id',
+            key: '_id',
+            width: "20%",
+            align: "center"
+        },
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            align: "center"
+        },
+        {
+            title: 'Location',
+            dataIndex: 'location',
+            key: 'location',
+            align: "center"
+        },
+    ];
+
     return {
-        ...propsQueryAllLaboratory
+        propsQueryAllLaboratory,
+        columns
     }
 }

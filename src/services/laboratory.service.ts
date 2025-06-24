@@ -1,6 +1,5 @@
 import { HttpClient, HttpMethod } from "@/infra/httpClient.type";
-import { ILaboratory } from "@/models/laboratory.model";
-
+import { IcreateLaboratory, ILaboratory } from "@/models/laboratory.model";
 
 export class LaboratoryService {
     constructor(private readonly httpClient: HttpClient) { }
@@ -17,4 +16,17 @@ export class LaboratoryService {
             throw error
         }
     }
+
+    async createLaboratory(params: IcreateLaboratory) {
+        try {
+            await this.httpClient.request({
+                method: HttpMethod.POST,
+                endpoint: this.URL + "/create",
+                body: params
+            })
+        } catch (error) {
+            throw error
+        }
+    }
+
 }

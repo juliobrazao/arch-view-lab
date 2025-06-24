@@ -8,3 +8,10 @@ export interface ILaboratory {
     createdAt: number
     __v: number
 }
+
+export interface IcreateLaboratory {
+    name: string
+    location: string
+    capacity: number
+    isAvailable: boolean
+}
